@@ -1,5 +1,5 @@
 <!-- GHS Label Generator By Sebastien Leib -->
-<!-- Current version completed on: 21/02/22 -->
+<!-- Current version completed on: 24/02/22 -->
 <!DOCTYPE html>
 <html>
 
@@ -16,7 +16,7 @@
 		}
 
 		h1 {
-			padding-top: 1.5em;
+			padding-top: 0.8%;
 		}
 
 		.form {
@@ -142,7 +142,7 @@
 			<input type="button" class="submitBtn" value="Generate Labels" onclick="process(this.form)">
 
 		</form>
-		<p class="watermark">Made By Seb, 21/02/22</p>
+		<p class="watermark">Made By Seb, 2022</p>
 	</div>
 
 	<script>
@@ -189,7 +189,7 @@
 			}
 		}
 
-		const nums = "()+-1234567890₍₎₊₋₁₂₃₄₅₆₇₈₉₀⁽⁾⁺⁻¹²³⁴⁵⁶⁷⁸⁹⁰";
+		const nums = "()+-1234567890n₍₎₊₋₁₂₃₄₅₆₇₈₉₀ₙ⁽⁾⁺⁻¹²³⁴⁵⁶⁷⁸⁹⁰ⁿ";
 		let lastChar;
 		const input = document.getElementById('chemFormula');
 		let focus = -1;
@@ -215,7 +215,10 @@
 					
 					// Interesting items list, so that if the current lastChar was superscript, the options would be subscript and regular
 					// Basically shows the other two types of the same character
-					let items = [nums[nums.indexOf(lastChar) + 14 >= nums.length ? nums.indexOf(lastChar) - 28 : nums.indexOf(lastChar) + 14], nums[nums.indexOf(lastChar) + 28 >= nums.length ? nums.indexOf(lastChar) - 14 : nums.indexOf(lastChar) + 28]];
+					let items = [
+                        nums[nums.indexOf(lastChar) + (nums.length / 3) >= nums.length ? nums.indexOf(lastChar) - (2 * nums.length / 3) : nums.indexOf(lastChar) + (nums.length / 3)], 
+                        nums[nums.indexOf(lastChar) + (2 * nums.length / 3) >= nums.length ? nums.indexOf(lastChar) - (nums.length / 3) : nums.indexOf(lastChar) + (2 * nums.length / 3)]
+                    ];
 					for (let i = 0; i < items.length; i++) {
 						let dropItem = document.createElement("DIV");
 						dropItem.innerHTML = items[i];
@@ -537,14 +540,14 @@
                             },
                             rows: [
                                 outerTableRow,
-								outerTableRow,
-								outerTableRow,
-								outerTableRow,
-								outerTableRow,
-								outerTableRow,
-								outerTableRow,
-								outerTableRow,
-								outerTableRow,						
+                                outerTableRow,
+                                outerTableRow,
+                                outerTableRow,
+                                outerTableRow,
+                                outerTableRow,
+                                outerTableRow,
+                                outerTableRow,
+                                outerTableRow,						
                             ],
                         }),
                     ],
